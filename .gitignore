@@ -22,3 +22,35 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Arquivos de configuração do Eclipse
+*.launch
+*.iml
+*.metadata/
+
+# Logs e relatórios
+*.log
+*.pot
+*.out
+*.swp
+
+# Arquivos de configuração
+.DS_Store
+*.tmp
+*.bak
+*.backup
+*.diff
+*.orig
+*.cache
+*.patch
+*.log
+*.iml
+.idea/
+*.ipr
+*.iws
+/target/
+
+# Dependências Maven
+.m2/
+
+*.docx
