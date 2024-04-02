@@ -54,3 +54,5 @@ replay_pid*
 .m2/
 
 *.docx
+
+.vscode/
