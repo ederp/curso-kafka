@@ -10,17 +10,21 @@ import org.springframework.stereotype.Service;
 import com.store.car.dto.CarPostDTO;
 import com.store.car.entity.CarPostEntity;
 import com.store.car.repository.CarPostRepository;
+import com.store.car.repository.OwnerPostRepository;
 
 @Service
 public class CarPostServiceImpl implements CarPostService{
 
     @Autowired
     private CarPostRepository carPostRepository;
+    @Autowired
+    private OwnerPostRepository ownerPostRepository;
 
     @Override
     public void newPostDetails(CarPostDTO carPostDTO) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'newPostDetails'");
+        CarPostEntity carPostEntity = this.mapCarDtoToEntity(carPostDTO);
+        carPostRepository.save(carPostEntity);
     }
 
     @Override
@@ -28,7 +32,7 @@ public class CarPostServiceImpl implements CarPostService{
         // TODO Auto-generated method stub
         List<CarPostDTO> listCarSales = new ArrayList<>();
         carPostRepository.findAll().forEach(item ->{
-            listCarSales.add(mapCarEntityToDTO(item));
+            listCarSales.add(this.mapCarEntityToDTO(item));
         });
         return listCarSales;
     }
@@ -54,6 +58,28 @@ public class CarPostServiceImpl implements CarPostService{
     public void removeCarSale(Long postId) {
         // TODO Auto-generated method stub
         carPostRepository.deleteById(postId);
+    }
+
+    private CarPostEntity mapCarDtoToEntity(CarPostDTO carPostDTO) {
+        // TODO Auto-generated method stub
+        CarPostEntity carPostEntity = new CarPostEntity();
+
+        ownerPostRepository.findById(carPostDTO.getOwnerId()).ifPresentOrElse(item ->{
+            carPostEntity.setOwnerPost(item);
+            carPostEntity.setContact(item.getContactNumber());
+        }, () -> {
+            throw new RuntimeException();
+        });
+
+        carPostEntity.setModel(carPostDTO.getModel());
+        carPostEntity.setBrand(carPostDTO.getBrand());
+        carPostEntity.setPrice(carPostDTO.getPrice());
+        carPostEntity.setCity(carPostDTO.getCity());
+        carPostEntity.setDescription(carPostDTO.getDescription());
+        carPostEntity.setEngineVersion(carPostDTO.getEngineVersion());
+        carPostEntity.setCreatedDate(carPostDTO.getCreatedDate());
+
+        return carPostEntity;
     }
 
     private CarPostDTO mapCarEntityToDTO(CarPostEntity carPostEntity) {
