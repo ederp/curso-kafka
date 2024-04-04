@@ -18,6 +18,7 @@ public class OwnerPostController {
 	@Autowired
 	private OwnerPostService ownerPostService;
 
+	@SuppressWarnings("rawtypes")
 	@PostMapping
 	public ResponseEntity createOwnerCar(@RequestBody OwnerPostDTO ownerPostDTO) {
 		ownerPostService.createOwnerCar(ownerPostDTO);

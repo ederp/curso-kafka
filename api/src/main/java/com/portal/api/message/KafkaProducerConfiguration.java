@@ -35,8 +35,9 @@ public class KafkaProducerConfiguration {
 		return new DefaultKafkaProducerFactory<String, CarPostDTO>(configProps);
 	}
 	
+	@SuppressWarnings("null")
 	@Bean
 	public KafkaTemplate<String, CarPostDTO> userKafkaTemplate(){
-		return new KafkaTemplate<String, CarPostDTO>(userProducerFactory());
+		return new KafkaTemplate<String, CarPostDTO>(this.userProducerFactory());
 	}
 }

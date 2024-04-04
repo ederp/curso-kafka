@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,6 +45,7 @@ public class CarPostEntity {
     @Column(name = "car_post_contact")
     private String contact;
 
+    @ManyToOne
     @JoinColumn(name = "owner-post_id", nullable = false, referencedColumnName = "id")
     private OwnerPostEntity ownerPost;
 }
