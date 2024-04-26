@@ -1,2 +1,3 @@
 # curso-kafka
-Arquivos do projeto do curso de Java com Spring Boot, Kafka e Microserviços da Udemy
+Arquivos do projeto do curso de Java com Spring Boot, Kafka e Microserviços da Udemy.  
+O projeto consiste na criação de um sistema de anúncios de compra e venda de carros, onde os usuários criam um perfil e os respectivos anúncios. O sistema contém três microsserviços: [Car](https://github.com/ederp/curso-kafka/tree/main/car), contendo os dados referentes aos anúncios de carro e seus respectivos anunciantes, [API](https://github.com/ederp/curso-kafka/tree/main/api) referente ao serviço de requisição e resposta do CRUD dos anúncios, e [Data](https://github.com/ederp/curso-kafka/tree/main/data), fornecendo os dados referentes a quantidade de postagens de anúncios. 
